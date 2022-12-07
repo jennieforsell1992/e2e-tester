@@ -1,4 +1,3 @@
-import { IMovie } from "./../../src/ts/models/Movie";
 import { mockData } from "./../../src/ts/services/__mocks__/movieservice";
 
 describe("search movies", () => {
@@ -24,7 +23,7 @@ describe("search movies", () => {
     cy.get("div.movie > h3").should("have.length", 3);
   });
 
-  it("should get fake movies", () => {
+  it("should get movies", () => {
     cy.visit("http://localhost:1234");
     cy.intercept("GET", "http://omdbapi.com/*", mockData);
 
