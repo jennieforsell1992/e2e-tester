@@ -5,12 +5,22 @@ beforeEach(() => {
 });
 
 describe("search movies", () => {
+  it("should have title", () => {
+    cy.get("title").contains("Async testing");
+  });
+
   it("should put text in input", () => {
     cy.get("input").type("text").should("have.value", "text");
   });
 
   it("should have button", () => {
     cy.get("button").contains("Sök");
+  });
+
+  it("should get real data, movies", () => {
+    cy.get("input").type("star").should("have.value", "star");
+    cy.get("form").submit();
+    cy.get("div#movie-container > div.movie").should("have.length", 10);
   });
 
   it("should get movies", () => {
